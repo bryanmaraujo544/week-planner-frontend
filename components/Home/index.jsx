@@ -47,7 +47,7 @@ export const Home = ({ workouts: allWorkouts }) => {
     if (dayNumber === 0) {
         // TO-DO: clean all the trains
     }
-
+    
     return (
         <Container>
             <Header user={user} />

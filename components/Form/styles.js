@@ -51,9 +51,11 @@ export const FormContainer = styled.form`
         font-size: 2.0rem;
         font-weight: 700;
         color: #6C757D;
+
         @media (max-width: 657px){
             height: 64px;
             width: 100%;
+            font-size: 1.6rem;
         }
     }
 `;
