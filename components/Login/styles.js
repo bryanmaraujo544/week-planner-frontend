@@ -16,6 +16,10 @@ export const Title = styled.h1`
   margin-top: 32px;
   margin-bottom: 4px;
   color: #0A1A15;
+
+  @media (max-width: 468px) {
+    font-size: 3.2rem;
+  }
 `;
 
 export const Subtitle = styled.h2`
@@ -23,9 +27,13 @@ export const Subtitle = styled.h2`
   font-weight: 500;
   margin-bottom: 32px;
   color: #6C757D;
-
+  text-align: center;
   a {
     color: #12694F;
+  }
+
+  @media (max-width: 468px) {
+    font-size: 1.6rem;
   }
 `;
 

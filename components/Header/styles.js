@@ -8,10 +8,15 @@ export const Container = styled.header`
   margin-top: 16px;
 
   h3 {
-      font-size: 24px;
-      font-weight: 900;
-      color: #0A1A15;
-      margin-right: 16px;
+    font-size: 24px;
+    font-weight: 900;
+    color: #0A1A15;
+    margin-right: 16px;
+
+    @media (max-width: 468px) {
+      font-size: 18px;
+      margin-right: 12px;
+    }
   }
 
   .logout-icon {
