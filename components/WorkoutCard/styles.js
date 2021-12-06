@@ -64,14 +64,6 @@ export const Card = styled.div`
       font-size: 2.8rem;
       font-weight: 700;
       color: ${(props) => props.wasTrained ? '#E9ECEF' : '#0A1A15' };
-
-      @media (max-width: 678px) {
-        font-size: 2.4rem;
-      }
-
-      @media (max-width: 468px) {
-        font-size: 1.8rem;
-      }
     }
 
     .workout-day {
@@ -79,10 +71,6 @@ export const Card = styled.div`
       color: ${(props) => props.wasTrained ? '#CED4DA' : '#6C757D' } ;
       font-weight: 500;
       margin-top: 4px;
-
-      @media (max-width: 468px) {
-        font-size: 1.6rem;
-      }
 
     }
   }
