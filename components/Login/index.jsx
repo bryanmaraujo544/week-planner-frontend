@@ -5,6 +5,8 @@ import { api } from '../../services/api';
 import { setCookie } from 'nookies';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { fadeIn, propagationFadeIn, listItem } from '../../animations';
 
 export const Login = () => {
   const router = useRouter();
@@ -24,14 +26,32 @@ export const Login = () => {
   return (
     <Container>
       <Logo />
-      <Title> Conecte-se </Title>
-      <Subtitle> 
+      <Title 
+        as={motion.h1}
+        variants={fadeIn}
+        initial="hidden"
+        animate="show"
+      > 
+        Conecte-se 
+      </Title>
+      <Subtitle
+        as={motion.h2}
+        variants={fadeIn}
+        initial="hidden"
+        animate="show"
+      > 
         Não tem uma conta? <Link href="/register"> Registre-se agora </Link>
       </Subtitle>
-      <Form onSubmit={handleSubmit(onSubmit)}>
-          <Input {...register('email')} placeholder="Insira um email" />
-          <Input {...register('password')} type="password" placeholder="Insira uma senha" />
-        <Button type="submit" >Entrar</Button>
+      <Form 
+        onSubmit={handleSubmit(onSubmit)} 
+        as={motion.form}
+        variants={propagationFadeIn}
+        initial="hidden"
+        animate="show"
+      >
+        <Input as={motion.input} variants={listItem} {...register('email')} placeholder="Insira um email" />
+        <Input as={motion.input} variants={listItem} {...register('password')} type="password" placeholder="Insira uma senha" />
+        <Button as={motion.button} variants={listItem}type="submit" >Entrar</Button>
       </Form>
     </Container>
   )

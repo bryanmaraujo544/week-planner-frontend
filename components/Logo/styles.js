@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.h1`
+export const Container = styled.p`
     font-size: 36px;
     background-color: #f3ec78;
     background-image: linear-gradient(45deg, #59E3BA, #0A1A15);
