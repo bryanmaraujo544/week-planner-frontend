@@ -2,7 +2,7 @@ import axios from 'axios';
 import { parseCookies } from 'nookies';
 
 export const api = axios.create({
-    baseURL: 'http://localhost:5000'
+    baseURL: 'https://week-planner-node.herokuapp.com/'
 });
 
 const { token } = parseCookies();
