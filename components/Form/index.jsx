@@ -1,13 +1,12 @@
-import { useState, useRef } from 'react';
-import { FormContainer, Input, Button } from './styles';
+import { useState } from 'react';
+import { FormContainer, Button } from './styles';
 import { Dropdown } from '../Dropdown';
-import { useForm } from 'react-hook-form';
-import { api } from '../../services/api';
 import { MdOutlinePlaylistAdd } from 'react-icons/md';
+import { api } from '../../services/api';
+import { scroller } from 'react-scroll'
 
-export const Form = ({ workouts, setWorkouts, inputRef }) => {
+export const Form = ({ workouts, setWorkouts, day, setDay, inputRef }) => {
   const [workoutName, setWorkoutName] = useState('');
-  const [day, setDay] = useState('');
   
   
   const handleSubmit = async (e) => {
@@ -32,6 +31,11 @@ export const Form = ({ workouts, setWorkouts, inputRef }) => {
     setWorkouts([...workouts, data.user]);
     setWorkoutName('');
     inputRef.current.focus();
+    scroller.scrollTo(day,  {
+      duration: 1000,
+      delay: 100,
+      smooth: true
+    });
   }
 
   return (

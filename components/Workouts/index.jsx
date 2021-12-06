@@ -31,14 +31,19 @@ function reducer(state, action){
     
 }
 
-export const Workouts = ({ workouts, setWorkouts, inputRef }) => {
+export const Workouts = ({ workouts, setWorkouts, setDay, inputRef }) => {
     const [daysIsOpened, toggleDayIsOpened] = useReducer(reducer, initialState); // The reducer with contain if each day workouts is openned or not
+
+    const handleInputFocus = (day) => {
+        setDay(day); // Setting the value of the dropdown as the day of the empty card clicked
+        inputRef.current.focus();
+    }
 
     return (
         <WorkoutsContainer>
             {/* Here I am putting each day of the week on the screen */}
             {weekDays.map(({ day, slug }) => (
-                <WorkoutsPerDay key={slug}>
+                <WorkoutsPerDay key={slug} id={day}>
                     <DayContainer>
                         <Day>{day}</Day>
                         <div className="toggleOpen-icon" onClick={() => toggleDayIsOpened({ day: slug })}>
@@ -50,7 +55,7 @@ export const Workouts = ({ workouts, setWorkouts, inputRef }) => {
                         And if there is no workout in this day I return a component wich say 'there´s no train in this day'
                     */}
                     {daysIsOpened[slug].isOpen && (
-                        workouts.filter((workout) => workout.day === day).length > 0 ? ( // If the length of the array of the workout in a day is 0 is rendered a empty
+                        workouts.filter((workout) => workout?.day === day).length > 0 ? ( // If the length of the array of the workout in a day is 0 is rendered a empty
                             workouts.map((workout) => {
                                 if (workout.day === day) {
                                     return (
@@ -65,7 +70,7 @@ export const Workouts = ({ workouts, setWorkouts, inputRef }) => {
                                 return null;
                             })
                         ) : (
-                            <EmptyWorkouts onClick={() => inputRef.current.focus()}>
+                            <EmptyWorkouts onClick={() => handleInputFocus(day)}>
                                 <IoIosAddCircleOutline   size="26px" color="#ADB5BD" />
                                 <p> Nenhum treino este dia </p>
                             </EmptyWorkouts>

@@ -3,6 +3,7 @@ import { api } from '../services/api';
 import nookies from 'nookies';
 
 export default function Home({ workouts }) {
+  console.log('work', workouts);
   return (
     <HomeComp workouts={workouts} />
   )

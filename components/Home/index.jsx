@@ -18,6 +18,8 @@ export const Home = ({ workouts: allWorkouts }) => {
 
     const inputRef = useRef(null); // ref that is being used by the main input
     const [workouts, setWorkouts] = useState(allWorkouts);
+    const [day, setDay] = useState('');
+    console.log({workouts});
 
     const date = new Date();
     const dayNumber = date.getDay();
@@ -28,8 +30,18 @@ export const Home = ({ workouts: allWorkouts }) => {
     return (
         <Container>
             <Header user={user} />
-            <Form workouts={workouts} setWorkouts={setWorkouts} inputRef={inputRef} />
-            <Workouts workouts={workouts} setWorkouts={setWorkouts} inputRef={inputRef} />
+            <Form 
+                workouts={workouts} 
+                setWorkouts={setWorkouts} 
+                day={day} setDay={setDay} 
+                inputRef={inputRef} 
+            />
+            <Workouts 
+                workouts={workouts} 
+                setWorkouts={setWorkouts} 
+                setDay={setDay} 
+                inputRef={inputRef} 
+            />
         </Container>
     )
 }
