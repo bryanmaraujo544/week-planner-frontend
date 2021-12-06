@@ -5,10 +5,10 @@ export const Container = styled.header`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  margin-top: 16px;
+  margin-top: 1.6rem;
 
   h3 {
-      font-size: 24px;
+      font-size: 2.4rem;
       font-weight: 900;
       color: #0A1A15;
       margin-right: 16px;

@@ -67,7 +67,7 @@ export const Workouts = ({ workouts, setWorkouts, inputRef }) => {
                         ) : (
                             <EmptyWorkouts onClick={() => inputRef.current.focus()}>
                                 <IoIosAddCircleOutline   size="26px" color="#ADB5BD" />
-                                <p> You do not have any wokout in this day </p>
+                                <p> Nenhum treino este dia </p>
                             </EmptyWorkouts>
                         )
                     )}

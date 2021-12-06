@@ -2,12 +2,12 @@ import styled, { css } from 'styled-components';
 
 export const Card = styled.div`
   width: 100%;
-  padding: 24px;
+  padding: 2.4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border-radius: 12px;
-  background: #DEE2E6;
+  background: #F3F5F7;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
   margin-bottom: 16px;
 

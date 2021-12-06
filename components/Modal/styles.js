@@ -7,7 +7,7 @@ export const Container = styled.div`
   bottom: 0;
   top: 0;
   background: rgba(0,0,0,0.2);
-  padding: 16px;
+  padding: 1.6rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,7 +19,7 @@ export const Container = styled.div`
 export const ModalCard = styled.div`  
   position: relative;
   background: #FAFFFD;
-  padding: 32px;
+  padding: 3.2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,7 +37,8 @@ export const CloseButton = styled.div`
 `;
 
 export const Title = styled.h2`
-  font-size: 24px;
+  font-size: 2.4rem;
+  text-align: center;
   font-weight: 700;
   color: #0A1A15;
 `;
@@ -59,6 +60,10 @@ export const Button = styled.button`
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
+
+  @media (max-width: 468px) {
+    width: 100px;
+  }
 
   &:hover {
     transform: scale(1.05);

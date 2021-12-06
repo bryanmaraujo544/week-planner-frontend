@@ -13,7 +13,7 @@ export const Container = styled.main`
 export const Title = styled.h1`
   font-size: 4.2rem;
   font-weight: 900;
-  margin-top: 32px;
+  margin-top: 3.2rem;
   margin-bottom: 4px;
   color: #0A1A15;
 `;
@@ -21,7 +21,7 @@ export const Title = styled.h1`
 export const Subtitle = styled.h2`
   font-size: 2.0rem;
   font-weight: 500;
-  margin-bottom: 32px;
+  margin-bottom: 3.2rem;
   color: #6C757D;
 
   a {
@@ -38,7 +38,7 @@ export const Form = styled.form`
 `;
 
 export const Input = styled.input`
-  padding: 20px;
+  padding: 2.0rem;
   border-radius: 12px;
   background: #DEE2E6;
   font-size: 1.8rem;

@@ -4,7 +4,7 @@ export const Button = styled.button`
     border-radius: 12px;
     color: #59E3BA;
     height: 100%;
-    padding: 12px 24px;
+    padding: 1.2rem 2.4rem;
     background: #0A1A15;
     display: flex;
     justify-content: center;
@@ -23,10 +23,6 @@ export const Button = styled.button`
     @media (max-width: 657px){
         height: 64px;
     }
-`;
-
-export const Input = styled.input`
- 
 `;
 
 export const FormContainer = styled.form`

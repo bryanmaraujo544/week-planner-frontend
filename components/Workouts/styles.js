@@ -22,13 +22,13 @@ export const DayContainer = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin-bottom: 42px;
+    margin-bottom: 4.2rem;
     gap: 8px;
     margin-top: -4px;
-    background: #F3F5F7;
     box-shadow: 0 2px 4px rgba(0,0,0,0.03);
     border-radius: 12px;
     padding: 6px;
+    background: #DEE2E6;
 
     .toggleOpen-icon {
         cursor: pointer;
@@ -50,14 +50,14 @@ export const DayContainer = styled.div`
 `;
 
 export const Day = styled.h3`
-    font-size: 18px;
+    font-size: 1.8rem;
     font-weight: 700;
-    color: #ADB5BD;
+    color: #6C757D;
 `;
 
 export const EmptyWorkouts = styled.div`
     width: 100%;
-    padding: 32px;
+    padding: 3.2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,7 +74,7 @@ export const EmptyWorkouts = styled.div`
     }
 
     p {
-        font-size: 20px;
+        font-size: 2.0rem;
         font-weight: 700;
         color: #C4C4C4;
     }

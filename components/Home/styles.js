@@ -9,6 +9,6 @@ export const Container = styled.div`
     flex-direction: column;
     align-items: center;
     max-width: 820px;
-    padding: 0 32px 32px;
+    padding: 0 3.2rem 3.2rem;
 `;
 
