@@ -21,7 +21,7 @@ export const Button = styled.button`
     }
 
     @media (max-width: 657px){
-        height: 64px;
+        height: 7.0rem;
     }
 `;
 
@@ -29,7 +29,7 @@ export const FormContainer = styled.form`
     display: flex;
     width: 100%;
     height: 72px;
-    margin-top: 64px;
+    margin-top: 6.4rem;
     flex-wrap: wrap;
     gap: 16px;
 
@@ -48,8 +48,9 @@ export const FormContainer = styled.form`
         font-size: 2.0rem;
         font-weight: 700;
         color: #6C757D;
+
         @media (max-width: 657px){
-            height: 64px;
+            height: 7.0rem;
             width: 100%;
         }
     }

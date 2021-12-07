@@ -3,10 +3,10 @@ import { Container } from './styles';
 import { motion } from 'framer-motion'
 import { fadeIn } from '../../animations';
 
-const Logo = () => {
+const Logo = ({ children, ...props }) => {
     return (
         <Container         
-
+            {...props}
         >
             WeekPlanner
         </Container>

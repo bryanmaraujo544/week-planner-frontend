@@ -18,7 +18,7 @@ export const Select = styled.div`
 
     @media (max-width: 657px){
         flex-grow: 1;
-        height: 64px;
+        height: 7.0rem;
     }
 
     .icon {

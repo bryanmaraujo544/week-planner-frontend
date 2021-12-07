@@ -17,7 +17,7 @@ export const Header = ({ user }) => {
       initial="hidden"
       animate="show"
     >
-      <Logo />
+      <Logo className="logo" />
       <Flex>
           <h3>{user?.name}</h3>
           <HiOutlineLogout 
