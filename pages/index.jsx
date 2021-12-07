@@ -24,7 +24,7 @@ export const getServerSideProps = async (ctx) => {
   const { data } = await api.get('/auth');
   console.log(data);
 
-  if (!token || !data.auth) {
+  if (!token || data.auth === false) {
     return {
       redirect: {
         destination: '/login',

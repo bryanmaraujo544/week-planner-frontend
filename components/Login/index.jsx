@@ -1,4 +1,4 @@
-import { Container, Title, Form, Input, Button, Subtitle } from './styles';
+import { Container, Title, Form, Input, Button, Subtitle, Error } from './styles';
 import { useForm } from 'react-hook-form';
 import Logo from '../Logo';
 import { api } from '../../services/api';
@@ -10,16 +10,17 @@ import { fadeIn, propagationFadeIn, listItem } from '../../animations';
 
 export const Login = () => {
   const router = useRouter();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
   const onSubmit = async (data) => {
     try {
-      const { data: { token } } = await api.post('/auth/login', data);
-      setCookie(null, 'token', token);
-      api.defaults.headers['Authorization'] = `Bearer ${token}`;
+      const { data: loginData } = await api.post('/auth/login', data);
+      console.log({ loginData });
+      setCookie(null, 'token', loginData.token);
+      api.defaults.headers['Authorization'] = `Bearer ${loginData.token}`;
       router.push('/');
     } catch (err) {
-      window.alert(err?.response?.data?.message);
+      window.alert(err?.response?.loginData?.message);
     }
   }
 
@@ -58,8 +59,11 @@ export const Login = () => {
         initial="hidden"
         animate="show"
       >
-        <Input as={motion.input} variants={listItem} {...register('email')} placeholder="Insira um email" />
-        <Input as={motion.input} variants={listItem} {...register('password')} type="password" placeholder="Insira uma senha" />
+        <Input as={motion.input} variants={listItem} {...register('email', { required: true })} placeholder="Insira um email" />
+        {errors.email && <Error>Este campo é obrigatório</Error>}
+        <Input as={motion.input} variants={listItem} {...register('password', { required: true })} type="password" placeholder="Insira uma senha" />
+        {errors.password && <Error>Este campo é obrigatório</Error>}
+
         <Button as={motion.button} variants={listItem}type="submit" >Entrar</Button>
       </Form>
     </Container>

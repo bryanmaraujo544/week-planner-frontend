@@ -1,4 +1,4 @@
-import { Container, Title, Form, Input, Button, Subtitle } from './styles';
+import { Container, Title, Form, Input, Button, Subtitle, Error } from './styles';
 import { useForm } from 'react-hook-form';
 import Logo from '../Logo';
 import { api } from '../../services/api';
@@ -9,7 +9,7 @@ import { fadeIn, listItem, propagationFadeIn } from '../../animations';
 
 export const Register = () => {
   const router = useRouter();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
   const onSubmit = async (userInfo) => {
     try {
@@ -56,9 +56,12 @@ export const Register = () => {
         animate="show"
         
       >
-        <Input as={motion.input} variants={listItem} {...register('name')}  placeholder="Insira seu nome" />
-        <Input as={motion.input} variants={listItem} {...register('email')} placeholder="Insira um email" />
-        <Input as={motion.input} variants={listItem} {...register('password')} type="password" placeholder="Insira uma senha" />
+        <Input as={motion.input} variants={listItem} {...register('name', { required: true })}  placeholder="Insira seu nome" />
+        {errors.name && <Error>* Este campo é obrigatório</Error>}
+        <Input as={motion.input} variants={listItem} {...register('email', { required: true })} placeholder="Insira um email" />
+        {errors.name && <Error>* Este campo é obrigatório</Error>}
+        <Input as={motion.input} variants={listItem} {...register('password', { required: true })} type="password" placeholder="Insira uma senha" />
+        {errors.name && <Error>* Este campo é obrigatório</Error>}
         <Button as={motion.button} variants={listItem} type="submit" >Registrar-se</Button>
       </Form>
     </Container>

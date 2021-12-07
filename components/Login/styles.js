@@ -58,3 +58,11 @@ export const Button = styled.button`
   cursor: pointer;
   box-shadow: 0 0 9px #59E3BA80;
 `;
+
+export const Error = styled.span`
+  font-size: 1.4rem;
+  color: red;
+  margin-top: -4px;
+  margin-left: 4px;
+  margin-bottom: 4px;
+`;
