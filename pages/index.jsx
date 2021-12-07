@@ -1,11 +1,15 @@
 import { Home as HomeComp } from "../components/Home";
 import { api } from '../services/api';
 import nookies from 'nookies';
+import { AnimatePresence } from "framer-motion";
 
 export default function Home({ workouts }) {
   console.log('work', workouts);
   return (
-    <HomeComp workouts={workouts} />
+    <AnimatePresence>
+      <HomeComp workouts={workouts} />
+
+    </AnimatePresence>
   )
 }
 

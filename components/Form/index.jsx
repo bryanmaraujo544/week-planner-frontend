@@ -4,6 +4,8 @@ import { Dropdown } from '../Dropdown';
 import { MdOutlinePlaylistAdd } from 'react-icons/md';
 import { api } from '../../services/api';
 import { scroller } from 'react-scroll'
+import { fadeIn } from '../../animations';
+import { motion } from 'framer-motion';
 
 export const Form = ({ workouts, setWorkouts, day, setDay, inputRef }) => {
   const [workoutName, setWorkoutName] = useState('');
@@ -39,7 +41,13 @@ export const Form = ({ workouts, setWorkouts, day, setDay, inputRef }) => {
   }
 
   return (
-    <FormContainer onSubmit={handleSubmit}>
+    <FormContainer 
+      onSubmit={handleSubmit}
+      as={motion.form}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 1 }}
+    >
       <input
         ref={inputRef}
         placeholder="Digite o nome do seu treino" type="text" 

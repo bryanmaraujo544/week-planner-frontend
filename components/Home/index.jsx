@@ -7,7 +7,7 @@ import jwt from 'jsonwebtoken';
 import { Workouts } from '../Workouts';
 
 
-
+import { AnimatePresence, motion } from 'framer-motion';
 
 
 
@@ -26,6 +26,9 @@ export const Home = ({ workouts: allWorkouts }) => {
     if (dayNumber === 0) {
         // TO-DO: clean all the trains
     }
+
+
+    const [isOpen, setIsOpen] = useState(false);
 
     return (
         <Container>

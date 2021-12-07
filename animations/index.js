@@ -9,8 +9,8 @@ export const fadeIn = {
         transition: {
             type: 'spring',
             delay: .5,
-            mass: 1,
-            stiffness: 90
+            mass: 1.25,
+            stiffness: 125,
         }
     }
 }
@@ -35,7 +35,7 @@ export const listItem = {
         opacity: 1, 
         y: 0,
         transition: {
-            type: 'spring'
+            type: 'spring',
         }  
     }
 }

@@ -40,6 +40,7 @@ export const FormContainer = styled.form`
 
     .input {
         flex-grow: 1;
+        height: 100%;
         padding: 24px;
         background: #E9ECEF;
         border-radius: 12px;

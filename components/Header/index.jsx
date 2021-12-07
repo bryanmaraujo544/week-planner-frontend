@@ -3,13 +3,20 @@ import Logo from '../Logo';
 import { Modal } from '../Modal';
 import { HiOutlineLogout } from 'react-icons/hi';
 import { Container, Flex } from './styles';
+import { AnimatePresence, motion } from 'framer-motion';
+import { fadeIn } from '../../animations';
 
 
 export const Header = ({ user }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <Container>
+    <Container
+      as={motion.header}
+      variants={fadeIn}
+      initial="hidden"
+      animate="show"
+    >
       <Logo />
       <Flex>
           <h3>{user?.name}</h3>
@@ -19,7 +26,9 @@ export const Header = ({ user }) => {
             onClick={() => setIsModalOpen(true)}
           />
       </Flex>
-      { isModalOpen && <Modal setIsModalOpen={setIsModalOpen}/> }
+      <AnimatePresence>
+        { isModalOpen && <Modal setIsModalOpen={setIsModalOpen}/> }
+      </AnimatePresence>
     </Container>
   );
 }

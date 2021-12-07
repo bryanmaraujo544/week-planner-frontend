@@ -25,7 +25,16 @@ export const Login = () => {
 
   return (
     <Container>
-      <Logo />
+      <Logo
+        as={motion.p}
+        initial={{ opacity: 0, y: -300 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+            type: 'spring',
+            mass: 1,
+            stiffness: 90
+        }}
+      />
       <Title 
         as={motion.h1}
         variants={fadeIn}

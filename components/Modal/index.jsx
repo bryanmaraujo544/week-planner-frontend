@@ -1,6 +1,7 @@
 import { Container, ModalCard, ButtonsContainer, Button, Title } from './styles';
 import { useRouter } from 'next/router';
 import { destroyCookie } from 'nookies';
+import { motion } from 'framer-motion';
 export const Modal = ({ setIsModalOpen }) => {
   const router = useRouter();
 
@@ -10,8 +11,12 @@ export const Modal = ({ setIsModalOpen }) => {
   }
   return (
     <Container>
-      <ModalCard>
-        
+      <ModalCard
+        as={motion.div}
+        initial={{ opacity: 0, y: -300 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 300 }}
+      >
         <Title>
           Deseja mesmo sair da sua conta?
         </Title>

@@ -3,8 +3,8 @@ import { AiOutlineCheckCircle, AiFillCheckCircle } from 'react-icons/ai';
 import { CgGym } from 'react-icons/cg';
 import { BsFillCalendarDateFill, BsFillTrashFill } from 'react-icons/bs';
 import { api } from '../../services/api';
-
-export const WorkoutCard = ({ workout, workouts, setWorkouts }) => {
+import { AnimatePresence, motion } from 'framer-motion';
+export const WorkoutCard = ({ workout, workouts, setWorkouts, ...props }) => {
   const handleToggleTrain = async ({ id }) => {
     // Here I am updating the workout state for does not need update the page to grab the new workouts
     setWorkouts((prevWorkouts) => (
@@ -30,7 +30,13 @@ export const WorkoutCard = ({ workout, workouts, setWorkouts }) => {
   }
 
   return (
-    <Card wasTrained={workout.was_trained}>
+    <Card 
+      wasTrained={workout.was_trained} 
+      as={motion.div}
+      initial={{ opacity: 0, y: -100 }}
+      animate={{ opacity: 1, y: 0,  transition: { duration: .25 }}}
+      exit={{ opacity: 0, y: -100, transition: { duration: .25 }}}
+    >
       <div className="workout-info">
         <div className="info-container">
           <CgGym className="icon" size="20px" />
