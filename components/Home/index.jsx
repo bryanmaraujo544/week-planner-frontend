@@ -7,11 +7,6 @@ import jwt from 'jsonwebtoken';
 import { Workouts } from '../Workouts';
 
 
-import { AnimatePresence, motion } from 'framer-motion';
-
-
-
-
 export const Home = ({ workouts: allWorkouts }) => {
     const { token } = parseCookies();
     const user = jwt.decode(token);
@@ -19,16 +14,12 @@ export const Home = ({ workouts: allWorkouts }) => {
     const inputRef = useRef(null); // ref that is being used by the main input
     const [workouts, setWorkouts] = useState(allWorkouts);
     const [day, setDay] = useState('');
-    console.log({workouts});
 
     const date = new Date();
     const dayNumber = date.getDay();
     if (dayNumber === 0) {
         // TO-DO: clean all the trains
     }
-
-
-    const [isOpen, setIsOpen] = useState(false);
 
     return (
         <Container>

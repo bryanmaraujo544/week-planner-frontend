@@ -4,6 +4,7 @@ import { CgGym } from 'react-icons/cg';
 import { BsFillCalendarDateFill, BsFillTrashFill } from 'react-icons/bs';
 import { api } from '../../services/api';
 import { AnimatePresence, motion } from 'framer-motion';
+
 export const WorkoutCard = ({ workout, workouts, setWorkouts, ...props }) => {
   const handleToggleTrain = async ({ id }) => {
     // Here I am updating the workout state for does not need update the page to grab the new workouts
@@ -32,10 +33,7 @@ export const WorkoutCard = ({ workout, workouts, setWorkouts, ...props }) => {
   return (
     <Card 
       wasTrained={workout.was_trained} 
-      as={motion.div}
-      initial={{ opacity: 0, y: -100 }}
-      animate={{ opacity: 1, y: 0,  transition: { duration: .25 }}}
-      exit={{ opacity: 0, y: -100, transition: { duration: .25 }}}
+      {...props}
     >
       <div className="workout-info">
         <div className="info-container">

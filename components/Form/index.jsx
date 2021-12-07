@@ -3,13 +3,21 @@ import { FormContainer, Button } from './styles';
 import { Dropdown } from '../Dropdown';
 import { MdOutlinePlaylistAdd } from 'react-icons/md';
 import { api } from '../../services/api';
-import { scroller } from 'react-scroll'
+import { scroller } from 'react-scroll';
 import { fadeIn } from '../../animations';
 import { motion } from 'framer-motion';
 
 export const Form = ({ workouts, setWorkouts, day, setDay, inputRef }) => {
   const [workoutName, setWorkoutName] = useState('');
-  
+
+  const handleAnimations = () => {
+    inputRef.current.focus();
+    scroller.scrollTo(day,  {
+      duration: 1000,
+      delay: 100,
+      smooth: true
+    });
+  }
   
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,12 +40,8 @@ export const Form = ({ workouts, setWorkouts, day, setDay, inputRef }) => {
     
     setWorkouts([...workouts, data.user]);
     setWorkoutName('');
-    inputRef.current.focus();
-    scroller.scrollTo(day,  {
-      duration: 1000,
-      delay: 100,
-      smooth: true
-    });
+    
+    handleAnimations()
   }
 
   return (

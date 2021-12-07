@@ -4,6 +4,7 @@ import { WorkoutCard } from '../WorkoutCard';
 import { IoIosAddCircleOutline, IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
 import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
 import { fadeIn, listItem, propagationFadeIn } from '../../animations';
+import { animateScroll as scroll } from 'react-scroll';
 
 
 const weekDays = [
@@ -29,7 +30,7 @@ const initialState = {
 function reducer(state, action){
     return ({
         ...state,
-        [action.day]: { isOpen: !state[action.day].isOpen },
+        [action.day]: { isOpen: !state[action.day].isOpen }, // I'm grabbint the day sended by the action and toggling the isOpen prop of that day
     });
     
 }
@@ -39,15 +40,20 @@ export const Workouts = ({ workouts, setWorkouts, setDay, inputRef }) => {
 
     const handleInputFocus = (day) => {
         setDay(day); // Setting the value of the dropdown as the day of the empty card clicked
+        scroll.scrollToTop({
+            duration: 750
+        });
         inputRef.current.focus();
     }
 
     return (
-            <AnimateSharedLayout>
-        <WorkoutsContainer as={motion.section} layout>
+        <WorkoutsContainer as={motion.section} variants={propagationFadeIn} initial="hidden" animate="show" >
                 {/* Here I am putting each day of the week on the screen */}
+                <AnimateSharedLayout>
+
                 {weekDays.map(({ day, slug }) => (
-                        <WorkoutsPerDay key={slug} id={day} as={motion.div} animate={{ opacity: 1 }} layout>
+
+                        <WorkoutsPerDay key={slug} id={day} as={motion.div} variants={listItem}>
                             <DayContainer>
                                 <Day>{day}</Day>
                                 <div className="toggleOpen-icon" onClick={() => toggleDayIsOpened({ day: slug })}>
@@ -69,6 +75,10 @@ export const Workouts = ({ workouts, setWorkouts, setDay, inputRef }) => {
                                                         workout={workout} 
                                                         workouts={workouts} 
                                                         setWorkouts={setWorkouts}
+                                                        as={motion.div}
+                                                        initial={{ opacity: 0}}
+                                                        animate={{ opacity: 1, transition: { duration: .25 }}}
+                                                        exit={{ opacity: 0 }}
                                                         
                                                     />
                                                 )
@@ -76,8 +86,14 @@ export const Workouts = ({ workouts, setWorkouts, setDay, inputRef }) => {
                                             return null;
                                         })
                                     ) : (
-                                        <EmptyWorkouts as={motion.div}  variants={fadeIn} initial="hidden" animate="show" exit={{ opacity: 0, y: -100 }} onClick={() => handleInputFocus(day)}>
-                                            <IoIosAddCircleOutline   size="26px" color="#ADB5BD" />
+                                        <EmptyWorkouts 
+                                            as={motion.div}  
+                                            initial={{ opacity: 0, y: -100 }} 
+                                            animate={{ opacity: 1, y: 0 }}
+                                            exit={{ opacity: 0, y: -100 }} 
+                                            onClick={() => handleInputFocus(day)}>
+                                            <IoIosAddCircleOutline   size="26px" color="#ADB5BD" 
+                                        />
                                             <p> Nenhum treino este dia </p>
                                         </EmptyWorkouts>
                                     )
@@ -85,8 +101,8 @@ export const Workouts = ({ workouts, setWorkouts, setDay, inputRef }) => {
                             </AnimatePresence>
                         </WorkoutsPerDay>
                 ))}
+            </AnimateSharedLayout>
 
         </WorkoutsContainer>
-            </AnimateSharedLayout>
     );
 }
