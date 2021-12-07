@@ -1,8 +1,8 @@
-import { useReducer } from 'react';
+import { useEffect, useReducer } from 'react';
 import {  WorkoutsContainer, Day, WorkoutsPerDay, EmptyWorkouts, DayContainer } from './styles';
 import { WorkoutCard } from '../WorkoutCard';
 import { IoIosAddCircleOutline, IoIosArrowDown, IoIosArrowUp } from 'react-icons/io';
-import { AnimatePresence, AnimateSharedLayout, motion } from 'framer-motion';
+import { AnimatePresence, AnimateSharedLayout, motion, useAnimation, useMotionValue, useTransform } from 'framer-motion';
 import { fadeIn, listItem, propagationFadeIn } from '../../animations';
 import { animateScroll as scroll } from 'react-scroll';
 
@@ -17,26 +17,14 @@ const weekDays = [
     { day: 'Domingo', slug: 'domingo' },
 ];
 
-const initialState = {
-    segunda: { isOpen: true },
-    terca: { isOpen: true },
-    quarta: { isOpen: true },
-    quinta: { isOpen: true },
-    sexta: { isOpen: true },
-    sabado: { isOpen: true },
-    domingo: { isOpen: true },
-};
-
-function reducer(state, action){
-    return ({
-        ...state,
-        [action.day]: { isOpen: !state[action.day].isOpen }, // I'm grabbint the day sended by the action and toggling the isOpen prop of that day
-    });
-    
-}
-
-export const Workouts = ({ workouts, setWorkouts, setDay, inputRef }) => {
-    const [daysIsOpened, toggleDayIsOpened] = useReducer(reducer, initialState); // The reducer with contain if each day workouts is openned or not
+export const Workouts = ({ 
+    workouts, 
+    setWorkouts, 
+    setDay, 
+    daysIsOpened, 
+    toggleDayIsOpened, 
+    inputRef 
+}) => {
 
     const handleInputFocus = (day) => {
         setDay(day); // Setting the value of the dropdown as the day of the empty card clicked
@@ -50,14 +38,22 @@ export const Workouts = ({ workouts, setWorkouts, setDay, inputRef }) => {
         <WorkoutsContainer as={motion.section} variants={propagationFadeIn} initial="hidden" animate="show" >
                 {/* Here I am putting each day of the week on the screen */}
                 <AnimateSharedLayout>
-
                 {weekDays.map(({ day, slug }) => (
-
                         <WorkoutsPerDay key={slug} id={day} as={motion.div} variants={listItem}>
                             <DayContainer>
                                 <Day>{day}</Day>
-                                <div className="toggleOpen-icon" onClick={() => toggleDayIsOpened({ day: slug })}>
-                                    {daysIsOpened[slug].isOpen ? <IoIosArrowDown size="24px" /> : <IoIosArrowUp size="24px" />}
+                                <div className="toggleOpen-icon">
+                                    {daysIsOpened[slug].isOpen ? (
+                                        <motion.div whileHover={{ y: -3, transition: { yoyo: Infinity, duration: .65 } }}>
+                                            <IoIosArrowDown size="24px" onClick={() => toggleDayIsOpened({ day: slug, open: false })} /> 
+                                        </motion.div>
+                                    ) : (
+                                        <motion.div whileHover={{ y: -3, transition: { yoyo: Infinity, duration: .65 } }}>
+
+                                            <IoIosArrowUp size="24px" onClick={() => toggleDayIsOpened({ day: slug, open: true })} />
+                                        </motion.div>
+                                    )}
+                                    
                                 </div>
                             </DayContainer>
                             {/* Here I am checking if the workouts array has some workout with day property equal 
@@ -79,7 +75,6 @@ export const Workouts = ({ workouts, setWorkouts, setDay, inputRef }) => {
                                                         initial={{ opacity: 0}}
                                                         animate={{ opacity: 1, transition: { duration: .25 }}}
                                                         exit={{ opacity: 0 }}
-                                                        
                                                     />
                                                 )
                                             }

@@ -17,7 +17,6 @@ export const Container = styled.header`
       @media (max-width: 678px) {
         font-size: 2.2rem;
         overflow: hidden;
-        background: red;
         white-space: nowrap;
         text-overflow: hidden;
         max-width: 150px;

@@ -1,9 +1,11 @@
-import { Card, RightIcons } from './styles';
+import { useState } from 'react';
+import { Container, Card, RightIcons, DeleteDragButton } from './styles';
 import { AiOutlineCheckCircle, AiFillCheckCircle } from 'react-icons/ai';
 import { CgGym } from 'react-icons/cg';
 import { BsFillCalendarDateFill, BsFillTrashFill } from 'react-icons/bs';
 import { api } from '../../services/api';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion, useAnimation, useMotionValue, useTransform } from 'framer-motion';
+import { useEffect } from 'react';
 
 export const WorkoutCard = ({ workout, workouts, setWorkouts, ...props }) => {
   const handleToggleTrain = async ({ id }) => {
@@ -30,9 +32,38 @@ export const WorkoutCard = ({ workout, workouts, setWorkouts, ...props }) => {
     console.log({ message });
   }
 
+
+  const x = useMotionValue(0);
+  const xInput = [-250, 0, 500]
+  const width = useTransform(x, xInput, ["250px", "0px", "0px"]);
+  const background = useTransform(x, xInput, ["#eb0909", "#f63033", "#fff" ]);
+  const controls = useAnimation();
+
+  useEffect(() => {
+    // Grabbing the value of the motionvalue. And if is smaller than -250, in other words, if is -256, -299...
+    const unsubscribeX = x.onChange((latest) => {
+      if (latest < -250.0){
+        (async () => {
+          await controls.start({ opacity: 0, x: '-150%', })
+          handleDelete(workout.id); // Delete the card based on the id received by props
+        })();
+      }
+    })
+
+    return () => {
+      unsubscribeX();
+    }
+  }, []);
+
+  
   return (
+    <Container as={motion.div} animate={controls}>
+
     <Card 
-      wasTrained={workout.was_trained} 
+      wasTrained={workout.was_trained}
+      style={{ x }}
+      drag="x"
+      dragConstraints={{ left: 0, right: 0}}
       {...props}
     >
       <div className="workout-info">
@@ -45,28 +76,33 @@ export const WorkoutCard = ({ workout, workouts, setWorkouts, ...props }) => {
           <p className="workout-day">{workout.day}</p>
         </div>
       </div>
-      <RightIcons>
-        {workout.was_trained === 1 ? (
-          <AiFillCheckCircle 
+      <RightIcons wasTrained={workout.was_trained}>
+        <motion.div className="icon-box" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }}>
             
+          <AiFillCheckCircle
             onClick={() => handleToggleTrain(workout)} 
             className="check-icon" 
-            size="26px" 
           />
-        ) : (
-          <AiOutlineCheckCircle 
-            style={{cursor: 'pointer'}} 
-            onClick={() => handleToggleTrain(workout)} 
-            className="check-icon" 
-            size="26px" 
+
+        </motion.div>
+        <motion.div className="icon-box" whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.8 }}>
+          <BsFillTrashFill 
+            className="delete-icon"
+            size="24px" 
+            onClick={() => handleDelete(workout.id)} 
           />
-        )}
-        <BsFillTrashFill 
-          className="delete-icon"
-          size="24px" 
-          onClick={() => handleDelete(workout.id)} 
-        />
+        </motion.div>
       </RightIcons>
     </Card>
+    <DeleteDragButton
+      as={motion.div}
+      style={{ width, background }}
+    >
+      <BsFillTrashFill 
+            className="delete-drag-icon"
+            size="24px"
+      />
+    </DeleteDragButton>
+    </Container>
   )
 }

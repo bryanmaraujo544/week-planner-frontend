@@ -7,7 +7,9 @@ import { scroller } from 'react-scroll';
 import { fadeIn } from '../../animations';
 import { motion } from 'framer-motion';
 
-export const Form = ({ workouts, setWorkouts, day, setDay, inputRef }) => {
+
+
+export const Form = ({ workouts, setWorkouts, day, setDay, toggleDayIsOpened, inputRef }) => {
   const [workoutName, setWorkoutName] = useState('');
 
   const handleAnimations = () => {
@@ -18,12 +20,33 @@ export const Form = ({ workouts, setWorkouts, day, setDay, inputRef }) => {
       smooth: true
     });
   }
+
+  const getDaySlug = (day) => {
+    switch (day) {
+      case "Sábado":
+        return "sabado";
+      case "Segunda":
+        return 'segunda';
+      case 'Terça':
+        return 'terca';
+      case 'Quarta':
+        return 'quarta';
+      case 'Quinta':
+        return 'quinta';
+      case 'Sexta':
+        return 'sexta';
+      case 'Sábado': 
+        return 'sabado';
+      case 'Domingo':
+        return 'domingo'
+    }
+  };
   
   const handleSubmit = async (e) => {
     e.preventDefault();
     const hasWorkout = workouts.some((workout) => (
       workout.name.toLowerCase() === workoutName.toLowerCase() && workout.day === day
-      ));
+    ));
       
     if (workoutName === '' || day === '') {
       return window.alert('Não deixe nenhum campo vázio');
@@ -41,7 +64,8 @@ export const Form = ({ workouts, setWorkouts, day, setDay, inputRef }) => {
     setWorkouts([...workouts, data.user]);
     setWorkoutName('');
     
-    handleAnimations()
+    toggleDayIsOpened({ day: getDaySlug(day), open: true });
+    handleAnimations();
   }
 
   return (

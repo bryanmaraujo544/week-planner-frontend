@@ -6,8 +6,28 @@ import { parseCookies } from 'nookies';
 import jwt from 'jsonwebtoken';
 import { Workouts } from '../Workouts';
 
+const initialState = {
+    segunda: { isOpen: true },
+    terca: { isOpen: true },
+    quarta: { isOpen: true },
+    quinta: { isOpen: true },
+    sexta: { isOpen: true },
+    sabado: { isOpen: true },
+    domingo: { isOpen: true },
+};
+
+function reducer(state, action){
+    return ({
+        ...state,
+        [action.day]: { isOpen: action.open }, // I'm grabbint the day sended by the action and toggling the isOpen prop of that day
+    });
+    
+}
 
 export const Home = ({ workouts: allWorkouts }) => {
+    // The reducer is here because I'll need it in workouts component and form comp (to open the )
+    const [daysIsOpened, toggleDayIsOpened] = useReducer(reducer, initialState); // The reducer with contain if each day workouts is openned or not
+
     const { token } = parseCookies();
     const user = jwt.decode(token);
 
@@ -28,13 +48,17 @@ export const Home = ({ workouts: allWorkouts }) => {
                 workouts={workouts} 
                 setWorkouts={setWorkouts} 
                 day={day} setDay={setDay} 
-                inputRef={inputRef} 
+                inputRef={inputRef}
+                toggleDayIsOpened={toggleDayIsOpened}
             />
             <Workouts 
                 workouts={workouts} 
-                setWorkouts={setWorkouts} 
+                setWorkouts={setWorkouts}
+                day={day} 
                 setDay={setDay} 
                 inputRef={inputRef} 
+                daysIsOpened={daysIsOpened}
+                toggleDayIsOpened={toggleDayIsOpened}
             />
         </Container>
     )
