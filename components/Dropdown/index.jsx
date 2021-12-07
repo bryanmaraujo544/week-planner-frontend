@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Select, OptionContainer } from './styles';
 import { RiArrowDropDownLine } from 'react-icons/ri';
+import { set } from 'react-hook-form';
 
 const weekDays = ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'];
 

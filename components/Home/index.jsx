@@ -5,6 +5,7 @@ import { Header } from '../Header';
 import { parseCookies } from 'nookies';
 import jwt from 'jsonwebtoken';
 import { Workouts } from '../Workouts';
+import { api } from '../../services/api';
 
 const initialState = {
     segunda: { isOpen: true },
@@ -37,8 +38,13 @@ export const Home = ({ workouts: allWorkouts }) => {
 
     const date = new Date();
     const dayNumber = date.getDay();
+    console.log({ dayNumber }); 
     if (dayNumber === 0) {
         // TO-DO: clean all the trains
+        (async () => {
+            const { data } = await api.delete('/workouts');
+
+        })();
     }
 
     return (

@@ -13,7 +13,7 @@ export const Form = ({ workouts, setWorkouts, day, setDay, toggleDayIsOpened, in
   const [workoutName, setWorkoutName] = useState('');
 
   const handleAnimations = () => {
-    inputRef.current.focus();
+    inputRef.current?.focus();
     scroller.scrollTo(day,  {
       duration: 1000,
       delay: 100,
@@ -77,7 +77,6 @@ export const Form = ({ workouts, setWorkouts, day, setDay, toggleDayIsOpened, in
       transition={{ delay: 1 }}
     >
       <input
-        ref={inputRef}
         placeholder="Digite o nome do seu treino" type="text" 
         value={workoutName}
         onChange={(e) => setWorkoutName(e.target.value)} 

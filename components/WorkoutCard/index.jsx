@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState } from 'react';
 import { Container, Card, RightIcons, DeleteDragButton } from './styles';
 import { AiOutlineCheckCircle, AiFillCheckCircle } from 'react-icons/ai';

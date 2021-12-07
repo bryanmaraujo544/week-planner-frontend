@@ -15,6 +15,12 @@ export const Select = styled.div`
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    transition: .5s;
+
+    &:hover {
+        background: #CED4DA;
+        transition: .5s;
+    }
 
     @media (max-width: 657px){
         flex-grow: 1;
