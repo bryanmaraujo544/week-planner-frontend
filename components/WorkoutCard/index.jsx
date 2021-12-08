@@ -7,6 +7,7 @@ import { BsFillCalendarDateFill, BsFillTrashFill } from 'react-icons/bs';
 import { api } from '../../services/api';
 import { motion, useAnimation, useMotionValue, useTransform } from 'framer-motion';
 import { useEffect } from 'react';
+import { useWindowDimensions } from '../../hooks/useWindowSize';
 
 export const WorkoutCard = ({ workout, workouts, setWorkouts, ...props }) => {
   const handleToggleTrain = async ({ id }) => {
@@ -35,19 +36,33 @@ export const WorkoutCard = ({ workout, workouts, setWorkouts, ...props }) => {
 
 
   const x = useMotionValue(0);
-  const xInput = [-250, 0, 500]
-  const width = useTransform(x, xInput, ["250px", "0px", "0px"]);
+  const xInput = [-200, 0, 500]
+  const width = useTransform(x, xInput, ["200px", "0px", "0px"]);
   const background = useTransform(x, xInput, ["#eb0909", "#f63033", "#fff" ]);
   const controls = useAnimation();
+
+
+  const screenSize = useWindowDimensions();
 
   useEffect(() => {
     // Grabbing the value of the motionvalue. And if is smaller than -250, in other words, if is -256, -299...
     const unsubscribeX = x.onChange((latest) => {
-      if (latest < -250.0){
-        (async () => {
-          await controls.start({ opacity: 0, x: '-150%', })
-          handleDelete(workout.id); // Delete the card based on the id received by props
-        })();
+      if (screenSize.width > 678){
+        if (latest < -250.0){
+          (async () => {
+            await controls.start({ opacity: 0, x: '-150%', })
+            handleDelete(workout.id); // Delete the card based on the id received by props
+          })();
+        }
+
+      } else {
+        console.log('menor que -259')
+        if (latest < -100.0){
+          (async () => {
+            await controls.start({ opacity: 0, x: '-150%', })
+            handleDelete(workout.id); // Delete the card based on the id received by props
+          })();
+        }
       }
     })
 

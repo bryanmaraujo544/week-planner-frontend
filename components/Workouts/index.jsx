@@ -31,7 +31,7 @@ export const Workouts = ({
         scroll.scrollToTop({
             duration: 750
         });
-        inputRef.current.focus();
+        inputRef.current?.focus();
     }
 
     return (
