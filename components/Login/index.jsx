@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { ThemeContext } from '../../pages/_app';
 import { Container, Title, Form, Input, Button, Subtitle, Error } from './styles';
 import { useForm } from 'react-hook-form';
 import Logo from '../Logo';

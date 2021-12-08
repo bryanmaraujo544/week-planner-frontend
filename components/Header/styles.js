@@ -13,6 +13,7 @@ export const Container = styled.header`
       font-weight: 900;
       color: #0A1A15;
       margin-right: 16px;
+      margin-top: -4px;
 
       @media (max-width: 678px) {
         font-size: 2.2rem;
@@ -51,4 +52,27 @@ export const Flex = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+`;
+
+export const ColorModeBtn = styled.div`
+  position: relative;
+  display: flex;
+  margin-left: 6px;
+  cursor: pointer;
+
+  & > div {
+    display: flex
+  }
+
+  .sun {
+    position: absolute;
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+
+  .moon {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
 `;

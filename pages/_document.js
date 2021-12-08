@@ -1,6 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components';
-import { ThemeProvider } from '../contexts/ThemeProvider';
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -36,11 +35,8 @@ export default class MyDocument extends Document {
       <Html>
         <Head />
         <body>
-          <ThemeProvider>
             <Main />
             <NextScript />
-
-          </ThemeProvider>
         </body>
       </Html>
     )
