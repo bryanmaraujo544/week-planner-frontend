@@ -48,7 +48,7 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-  background: #${props => props.theme.primary};
+  background: ${props => props.theme.primary};
   border-radius: 12px;
   margin-top: 8px;
   color: ${props => props.theme.white};

@@ -8,7 +8,6 @@ export const api = axios.create({
 
 const { token } = parseCookies();
 
-
 if (token) { 
     api.defaults.headers['Authorization'] = `Bearer ${token}`;
 }
