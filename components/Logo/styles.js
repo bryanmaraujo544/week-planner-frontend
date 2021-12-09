@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.p`
     font-size: 36px;
     background-color: #f3ec78;
-    background-image: linear-gradient(45deg, #59E3BA, #0A1A15);
+    background-image: linear-gradient(45deg, #59E3BA, ${props => props.theme.title === 'dark' ? '#327F68' : '#0A1A15' });
     background-size: 100%;
     -webkit-background-clip: text;
     -moz-background-clip: text;

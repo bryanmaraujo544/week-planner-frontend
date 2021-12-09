@@ -11,8 +11,8 @@ export const Container = styled.header`
   h3 {
       font-size: 2.4rem;
       font-weight: 900;
-      color: #0A1A15;
-      margin-right: 16px;
+      color: ${props => props.theme.secondary};
+      margin-right: 2.4rem;
       margin-top: -4px;
 
       @media (max-width: 678px) {
@@ -39,11 +39,11 @@ export const Container = styled.header`
   }
 
   .logout-icon {
-    color: #0A1A15;
+    color: ${props => props.theme.secondary};
     cursor: pointer;
 
     &:hover {
-      color: #59E3BA;
+      color: ${props => props.theme.primary};
     }
   }
 `;
@@ -58,7 +58,7 @@ export const Flex = styled.div`
 export const ColorModeBtn = styled.div`
   position: relative;
   display: flex;
-  margin-left: 6px;
+  margin-right: 1.2rem;
   cursor: pointer;
 
   & > div {

@@ -2,10 +2,10 @@ import styled from 'styled-components';
 
 export const Button = styled.button`
     border-radius: 12px;
-    color: #59E3BA;
+    color: ${props => props.theme.primary};
     height: 100%;
     padding: 1.2rem 2.4rem;
-    background: #0A1A15;
+    background: ${props => props.theme.secondary};
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,8 +15,8 @@ export const Button = styled.button`
 
 
     &:hover {
-        background: #59E3BA;
-        color: #0A1A15;
+        background: ${props => props.theme.primary};
+        color: ${props => props.theme.secondary};
         transition: background .2s linear;
     }
 
@@ -42,12 +42,12 @@ export const FormContainer = styled.form`
         flex-grow: 1;
         height: 100%;
         padding: 24px;
-        background: #E9ECEF;
+        background: ${props => props.theme.primaryGray};
         border-radius: 12px;
         box-shadow: 0 3px 6px rgba(0,0,0,0.1);
         font-size: 2.0rem;
         font-weight: 700;
-        color: #6C757D;
+        color: ${props => props.theme.terciaryGray};
 
         @media (max-width: 657px){
             height: 7.0rem;

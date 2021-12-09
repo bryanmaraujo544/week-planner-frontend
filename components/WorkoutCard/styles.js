@@ -14,12 +14,12 @@ export const Card = styled.div`
   justify-content: space-between;
   align-items: center;
   border-radius: 12px;
-  background: #F3F5F7;
+  background: ${props => props.theme.cardGray};
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
   cursor: grab;
 
   ${(props) => props.wasTrained === 1 && css `
-    background: #8F959C;
+    background: ${props => props.theme.title === 'dark' ? '#6C757D' : '#8F959C'};
   `}
   
   .workout-info {
@@ -34,18 +34,18 @@ export const Card = styled.div`
       }
 
       .icon {
-        color: ${(props) => props.wasTrained === 1 ? '#E9ECEF' : '#0A1A15' };
+        color: ${(props) => props.wasTrained === 1 ? props.theme.title === 'dark' ? '#DEE2E6' : '#fff' : props.theme.title === 'dark' ? '#DEE2E6' : '#0A1A15' };
       }
     }
     .workout-name {
       font-size: 2.8rem;
       font-weight: 700;
-      color: ${(props) => props.wasTrained === 1 ? '#E9ECEF' : '#0A1A15' };
+      color: ${(props) => props.wasTrained === 1 ? props.theme.title === 'dark' ? '#DEE2E6' : '#fff' : props.theme.title === 'dark' ? '#DEE2E6' : '#0A1A15' };
     }
 
     .workout-day {
       font-size: 2.0rem;
-      color: ${(props) => props.wasTrained === 1 ? '#CED4DA' : '#6C757D' } ;
+      color: ${(props) => props.wasTrained === 1 ? props.theme.title === 'dark' ? '#DEE2E6' : '#fff' : props.theme.title === 'dark' ? '#DEE2E6' : '#0A1A15' } ;
       font-weight: 500;
       margin-top: 4px;
 
@@ -75,7 +75,7 @@ export const RightIcons = styled.div`
     color: ${props => props.wasTrained === 1 ? '#59E3BA' : '#ADB5BD'};
 
     &:hover {
-      color: #59E3BA;
+      color: ${props => props.theme.primary};
     } 
 
 
@@ -117,7 +117,7 @@ export const DeleteDragButton = styled.div`
   background: orange;
 
   .delete-drag-icon {
-    color: #fff;
+    color: ${props => props.theme.white};
     width: 18px;
   }
 

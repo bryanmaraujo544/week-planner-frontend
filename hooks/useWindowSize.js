@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 
 function getWindowDimensions() {
-  const { innerWidth: width, innerHeight: height } = window;
-  return {
-    width,
-    height
-  };
+  if (typeof window != "undefined") {
+    const { innerWidth: width, innerHeight: height } = window;
+    return {
+      width,
+      height
+    };
+  }
 }
 
 export function useWindowDimensions() {
@@ -15,9 +17,11 @@ export function useWindowDimensions() {
       function handleResize() {
         setWindowDimensions(getWindowDimensions());
       }
-  
-      window.addEventListener('resize', handleResize);
-      return () => window.removeEventListener('resize', handleResize);
+      
+      if (typeof window != "undefined") {
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+      }
     }, []);
   
     return windowDimensions;

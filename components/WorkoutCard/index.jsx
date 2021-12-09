@@ -42,7 +42,7 @@ export const WorkoutCard = ({ workout, workouts, setWorkouts, ...props }) => {
   const controls = useAnimation();
 
 
-  const screenSize = useWindowDimensions();
+  const screenSize = 20000
 
   useEffect(() => {
     // Grabbing the value of the motionvalue. And if is smaller than -250, in other words, if is -256, -299...

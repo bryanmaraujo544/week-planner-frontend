@@ -6,6 +6,7 @@ import { parseCookies } from 'nookies';
 import jwt from 'jsonwebtoken';
 import { Workouts } from '../Workouts';
 import { api } from '../../services/api';
+import { Body } from '../Body';
 
 const initialState = {
     segunda: { isOpen: true },
@@ -38,7 +39,7 @@ export const Home = ({ workouts: allWorkouts }) => {
 
     const date = new Date();
     const dayNumber = date.getDay();
-    console.log({ dayNumber }); 
+    
     if (dayNumber === 0) {
         // TO-DO: clean all the trains
         (async () => {
@@ -48,24 +49,27 @@ export const Home = ({ workouts: allWorkouts }) => {
     }
 
     return (
-        <Container>
-            <Header user={user} />
-            <Form 
-                workouts={workouts} 
-                setWorkouts={setWorkouts} 
-                day={day} setDay={setDay} 
-                inputRef={inputRef}
-                toggleDayIsOpened={toggleDayIsOpened}
-            />
-            <Workouts 
-                workouts={workouts} 
-                setWorkouts={setWorkouts}
-                day={day} 
-                setDay={setDay} 
-                inputRef={inputRef} 
-                daysIsOpened={daysIsOpened}
-                toggleDayIsOpened={toggleDayIsOpened}
-            />
-        </Container>
+        <Body>
+            <Container>
+                <Header user={user} />
+                <Form 
+                    workouts={workouts} 
+                    setWorkouts={setWorkouts} 
+                    day={day} setDay={setDay} 
+                    inputRef={inputRef}
+                    toggleDayIsOpened={toggleDayIsOpened}
+                />
+                <Workouts 
+                    workouts={workouts} 
+                    setWorkouts={setWorkouts}
+                    day={day} 
+                    setDay={setDay} 
+                    inputRef={inputRef} 
+                    daysIsOpened={daysIsOpened}
+                    toggleDayIsOpened={toggleDayIsOpened}
+                />
+            </Container>
+
+        </Body>
     )
 }

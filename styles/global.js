@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { parseCookies } from "nookies";
 
 export const GlobalStyles = createGlobalStyle`
     html {
@@ -9,7 +10,6 @@ export const GlobalStyles = createGlobalStyle`
         }
     }
     body {
-        background: #F0FFFB;
         height: 100%;
         width: 100%;
         max-width: 100vw;

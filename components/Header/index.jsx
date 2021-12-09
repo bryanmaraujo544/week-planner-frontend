@@ -13,6 +13,7 @@ export const Header = ({ user }) => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const [isModalOpen, setIsModalOpen] = useState(false);
   console.log({theme});
+  
   return (
     <Container
       as={motion.header}
@@ -23,29 +24,29 @@ export const Header = ({ user }) => {
       <Logo className="logo" />
       <Flex>
           <h3>{user?.name}</h3>
-          <HiOutlineLogout 
-            size="26px" 
-            className="logout-icon"
-            onClick={() => setIsModalOpen(true)}
-          />
           <ColorModeBtn 
             onClick={toggleTheme}
             as={motion.div}
             whileTap={{ scale: 0.9 }}
           >
             <motion.div 
-              style={{ opacity: theme === 'light' ? 0 : 1, zIndex: theme === 'dark' ? 4 : 1}} 
+              style={{ color: '#FAFFFD', opacity: theme === 'dark' ? 1 : 0, zIndex: theme === 'dark' ? 4 : 1}} 
               whileHover={{ color: '#faa307', scale: 1.1 }}
             >
               <FaSun className="sun"/>
             </motion.div>
             <motion.div
-              style={{ opacity: theme === 'dark' ? 0 : 1, zIndex: theme === 'light' ? 4 : 1}}
+              style={{ color: '#0A1A15', opacity: theme === 'light' ? 1 : 0, zIndex: theme === 'light' ? 4 : 1}}
               whileHover={{ color: '#023047', scale: 1.1 }}
             >
               <FaMoon className="moon"  />
             </motion.div>
           </ColorModeBtn>
+          <HiOutlineLogout 
+            size="26px" 
+            className="logout-icon"
+            onClick={() => setIsModalOpen(true)}
+          />
       </Flex>
       <AnimatePresence>
         { isModalOpen && <Modal setIsModalOpen={setIsModalOpen}/> }

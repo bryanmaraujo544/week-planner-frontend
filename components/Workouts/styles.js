@@ -28,7 +28,7 @@ export const DayContainer = styled.div`
     box-shadow: 0 2px 4px rgba(0,0,0,0.03);
     border-radius: 12px;
     padding: 6px;
-    background: #DEE2E6;
+    background: ${props => props.theme.secondaryGray};
 
     .toggleOpen-icon {
         cursor: pointer;
@@ -38,13 +38,13 @@ export const DayContainer = styled.div`
         margin-top: 4px;
         padding: 4px;
         padding-top: 0px;
-        color: #ADB5BD;
+        color: ${props => props.theme.terciaryGray};
         z-index: 11;
         position: absolute;
         top: 100%;
 
         &:hover {
-            color: #6C757D;
+            color: ${props => props.theme.terciaryGray};
         }
     }
 `;
@@ -52,7 +52,7 @@ export const DayContainer = styled.div`
 export const Day = styled.h3`
     font-size: 1.8rem;
     font-weight: 700;
-    color: #6C757D;
+    color: ${props => props.theme.terciaryGray};
 `;
 
 export const EmptyWorkouts = styled.div`
@@ -62,20 +62,21 @@ export const EmptyWorkouts = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 12px;
-    border: 2px dashed #C4C4C4;
+    border: 2px dashed ${props => props.theme.secondaryGray};
     gap: 16px;
     margin-bottom: 16px;
     cursor: pointer;
+    transition: .3s;
 
     &:hover{
-        border: 2px dashed #ADB5BD;
-
-        p { color: #ADB5BD; }
+        border: 2px dashed ${props => props.theme.terciaryGray};
+        transition: .3s;
+        p { color: ${props => props.theme.terciaryGray}; }
     }
 
     p {
         font-size: 2.0rem;
         font-weight: 700;
-        color: #C4C4C4;
+        color: ${props => props.theme.secondaryGray};
     }
 `;

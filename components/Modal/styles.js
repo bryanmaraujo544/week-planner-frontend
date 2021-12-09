@@ -18,7 +18,7 @@ export const Container = styled.div`
 
 export const ModalCard = styled.div`  
   position: relative;
-  background: #FAFFFD;
+  background: ${props => props.theme.cardGray};
   padding: 3.2rem;
   display: flex;
   flex-direction: column;
@@ -40,7 +40,7 @@ export const Title = styled.h2`
   font-size: 2.4rem;
   text-align: center;
   font-weight: 700;
-  color: #0A1A15;
+  color: ${props => props.theme.secondary};
 `;
 
 export const ButtonsContainer = styled.div`
@@ -55,8 +55,8 @@ export const Button = styled.button`
   border-radius: 12px;
   padding: 8px;
   width: 125px;
-  color: ${props => props.isCancel ? '#0A1A15' : '#fff'};
-  background: ${props => props.isCancel ? 'transparend' : 'red'};
+  color: ${props => props.isCancel ? props.theme.title === 'dark' ? '#F3F5F7' : '#0A1A15' : '#fff'};
+  background: ${props => props.isCancel ? 'transparent' : 'red'};
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;

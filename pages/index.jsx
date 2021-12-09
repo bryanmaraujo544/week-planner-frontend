@@ -38,7 +38,7 @@ export const getServerSideProps = async (ctx) => {
 
   return {
     props: {
-      workouts
+      workouts: workouts ? workouts : []
     }
   }
 } 

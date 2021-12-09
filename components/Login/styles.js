@@ -15,14 +15,14 @@ export const Title = styled.h1`
   font-weight: 900;
   margin-top: 3.2rem;
   margin-bottom: 4px;
-  color: #0A1A15;
+  color: ${props => props.theme.secondary};
 `;
 
 export const Subtitle = styled.h2`
   font-size: 2.0rem;
   font-weight: 500;
   margin-bottom: 3.2rem;
-  color: #6C757D;
+  color: ${props => props.theme.terciaryGray};
 
   a {
     color: #12694F;
@@ -40,7 +40,7 @@ export const Form = styled.form`
 export const Input = styled.input`
   padding: 2.0rem;
   border-radius: 12px;
-  background: #DEE2E6;
+  background: ${props => props.theme.secondaryGray};
   font-size: 1.8rem;
   width: 100%;
   font-weight: 700;
@@ -48,15 +48,15 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-  background: #59E3BA;
+  background: ${props => props.theme.primary};
   border-radius: 12px;
   margin-top: 8px;
-  color: #ffffff;
+  color: ${props => props.theme.white};
   height: 48px;
   font-size: 1.8rem;
   font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 0 9px #59E3BA80;
+  box-shadow: 0 0 9px ${props => props.theme.boxShadow};
 `;
 
 export const Error = styled.span`

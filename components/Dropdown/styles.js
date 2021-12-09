@@ -4,7 +4,7 @@ export const Select = styled.div`
     position: relative;
     height: 100%;
     width: 175px;
-    background: #E9ECEF;
+    background: ${props => props.theme.primaryGray};
     border-radius: 12px;
     box-shadow: 0 3px 6px rgba(0,0,0,0.1);
     padding: 8px;
@@ -18,7 +18,7 @@ export const Select = styled.div`
     transition: .5s;
 
     &:hover {
-        background: #CED4DA;
+        background: ${props => props.theme.secondaryGray};
         transition: .5s;
     }
 
@@ -34,7 +34,7 @@ export const Select = styled.div`
 
 export const OptionContainer = styled.div`
     padding: 8px;
-    background: #DEE2E6;
+    background: ${props => props.theme.primaryGray};
     position: absolute;
     top: calc(100% + 12px);
     width: 175px;
@@ -47,7 +47,7 @@ export const OptionContainer = styled.div`
         padding: 8px;
         border-radius: 10px;
         &:hover {
-            background: #cccccc;
+            background: ${props => props.theme.secondaryGray};
             transition: .25s;
         }
     }

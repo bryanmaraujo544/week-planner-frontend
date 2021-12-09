@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { createContext, useContext, useEffect, useState } from 'react';
-import { ThemeProvider as ThemeProviderStyled } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from '../styles/global';
 import { theme as themeStyled } from '../styles/theme';
 import { parseCookies , setCookie} from 'nookies';
@@ -9,9 +9,10 @@ export const ThemeContext = createContext({});
 
 function MyApp({ Component, pageProps }) {
   const { themeSelected } = parseCookies();
-  console.log('oi');
-
+  console.log({ themeSelected })
   const [theme, setTheme] = useState(themeSelected || 'light');
+  console.log(themeStyled[theme])
+
   const toggleTheme = () => {
     setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
     setCookie(null, 'themeSelected', theme === 'light' ? 'dark' : 'light');
@@ -19,12 +20,12 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <GlobalStyles />
-      <ThemeProviderStyled theme={themeStyled[theme]}>
-        <ThemeContext.Provider value={{ theme, toggleTheme }}>
-          <Component {...pageProps}/>
-        </ThemeContext.Provider>
-      </ThemeProviderStyled>
+        <ThemeProvider theme={themeStyled[theme] || {oi: 'oi'}}>
+      <ThemeContext.Provider value={{ theme, toggleTheme }}>
+            <GlobalStyles />
+            <Component {...pageProps}/>
+      </ThemeContext.Provider>
+        </ThemeProvider>
     </>
   )
 }
