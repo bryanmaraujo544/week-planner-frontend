@@ -14,6 +14,7 @@ export const Card = styled.div`
   justify-content: space-between;
   align-items: center;
   border-radius: 12px;
+  gap: 1.6rem;
   background: ${props => props.theme.cardGray};
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
   cursor: grab;
@@ -23,11 +24,13 @@ export const Card = styled.div`
   `}
   
   .workout-info {
-    
+    flex: 1;
+    overflow-x: hidden;
     .info-container {
       display: flex;
       align-items: center;
       gap: 16px;
+      flex-grow: 1;
         
       & + .info-container {
         margin-top: 4px;
@@ -40,7 +43,14 @@ export const Card = styled.div`
     .workout-name {
       font-size: 2.8rem;
       font-weight: 700;
+      max-width: 100%;
+      flex-grow: 1;
+      overflow-x: hidden;
       color: ${(props) => props.wasTrained === 1 ? props.theme.title === 'dark' ? '#DEE2E6' : '#fff' : props.theme.title === 'dark' ? '#DEE2E6' : '#0A1A15' };
+
+      @media (max-width: 468px) {
+        overflow-x: scroll;
+      }
     }
 
     .workout-day {
@@ -57,7 +67,7 @@ export const RightIcons = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
+  
   .icon-box {
     display: flex;
     align-items: center;

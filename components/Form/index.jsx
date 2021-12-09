@@ -6,6 +6,7 @@ import { api } from '../../services/api';
 import { scroller } from 'react-scroll';
 import { fadeIn } from '../../animations';
 import { motion } from 'framer-motion';
+import { useEffect } from 'react/cjs/react.development';
 
 
 
@@ -41,6 +42,7 @@ export const Form = ({ workouts, setWorkouts, day, setDay, toggleDayIsOpened, in
         return 'domingo'
     }
   };
+
   
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,6 +52,10 @@ export const Form = ({ workouts, setWorkouts, day, setDay, toggleDayIsOpened, in
       
     if (workoutName === '' || day === '') {
       return window.alert('Não deixe nenhum campo vázio');
+    }
+
+    if (workoutName.length > 72) {
+      return window.alert('Nome muito grande');
     }
     
     if (hasWorkout) {
