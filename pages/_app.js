@@ -4,6 +4,8 @@ import { ThemeProvider } from 'styled-components';
 import { GlobalStyles } from '../styles/global';
 import { theme as themeStyled } from '../styles/theme';
 import { parseCookies , setCookie} from 'nookies';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const ThemeContext = createContext({});
 
@@ -20,7 +22,17 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-        <ThemeProvider theme={themeStyled[theme] || {oi: 'oi'}}>
+      <ToastContainer
+        pauseOnHover
+        draggable
+        position="top-center"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        icon={true}
+        closeOnClick
+      />
+        <ThemeProvider theme={themeStyled[theme]}>
       <ThemeContext.Provider value={{ theme, toggleTheme }}>
             <GlobalStyles />
             <Component {...pageProps}/>
