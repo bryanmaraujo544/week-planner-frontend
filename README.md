@@ -8,7 +8,7 @@
 ![Bitbucket open issues](https://img.shields.io/bitbucket/issues/iuricode/README-template?style=for-the-badge)
 ![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/iuricode/README-template?style=for-the-badge)
 
-<img src="exemplo-image.png" alt="exemplo imagem">
+![Animação](https://user-images.githubusercontent.com/62571814/145648954-4525ffb3-7bd1-4f01-b627-fdbf96425ea9.gif)
 
 > Application to user organize its own workouts in a week.
 
