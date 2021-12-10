@@ -1,34 +1,83 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Week Planner
 
-## Getting Started
+<!---Esses são exemplos. Veja https://shields.io para outras pessoas ou para personalizar este conjunto de escudos. Você pode querer incluir dependências, status do projeto e informações de licença aqui--->
 
-First, run the development server:
+![GitHub repo size](https://img.shields.io/github/repo-size/iuricode/README-template?style=for-the-badge)
+![GitHub language count](https://img.shields.io/github/languages/count/iuricode/README-template?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/iuricode/README-template?style=for-the-badge)
+![Bitbucket open issues](https://img.shields.io/bitbucket/issues/iuricode/README-template?style=for-the-badge)
+![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/iuricode/README-template?style=for-the-badge)
 
-```bash
-npm run dev
-# or
+<img src="exemplo-image.png" alt="exemplo imagem">
+
+> Application to user organize its own workouts in a week.
+
+### Some fixings and improvements: 
+
+The project is in first version and will receive the follow features in future:
+
+- [x] Increase the amount of the information in workout card.
+- [x] Make a page where the user is able to change its profile photo and other informations.
+- [x] Options to the user save some week workout to use in the next weeks
+
+FInal version intended
+- [ ] Make Personal Trainers and Gyms sell workouts for the customers use them
+- [ ] Customers are going to be able to buy a workout of Personal Trainer and receive follow-up of the teachers
+- [ ] Put videos on workout for a better experience to the customer
+- [ ] The gym is going to be able to create an account and create workouts wich will be available to its customers
+
+## 💻 How it was made
+
+To the Frontend of the application it was used Next.js, that is a Framework for React. It's consuming our own API made using Node.js. And the data is being storaged in MySQL database
+
+## 🚀 Technologies used in project
+
+- React
+- Next.js
+- Styled Components
+- Framer Motion
+- Node.js
+- MySQL
+
+
+## ☕ How to start the project in your machine
+
+To use the week-planner-frontend follow the steps below:
+
+```
+npm install OR yarn install
+// To install all of projects dependencies
+
 yarn dev
+// To run the project in developer server
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📫 Contributing to week-planner-frontend
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+To contribute, follow the next steps:
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+1. Fork this repository.
+2. Create a new branch: `git checkout -b <branch_name>`.
+3. Make your changes and confirm them: `git commit -m '<commit_message>'`
+4. Send to the main branch: `git push origin <project_name> / <local>`
+5. Create the pull request.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+As an alternative, check the documentation of the Github to lear how to make a pull request: (https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
-## Learn More
+## 🤝 Developer
 
-To learn more about Next.js, take a look at the following resources:
+<table>
+  <tr>
+    <td align="center">
+      <a href="#">
+        <img src="https://github.com/bryanmaraujo544.png" width="100px;" alt="Bryan's profile photo"/><br>
+        <sub>
+          <b>Bryan Martins</b>
+        </sub>
+      </a>
+    </td>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+</table>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+[⬆ Voltar ao topo](#week-planner-frontend)<br>
