@@ -59,7 +59,7 @@ export const WorkoutCard = ({ workout, workouts, setWorkouts, ...props }) => {
     
         if (latest < -100.0){
           (async () => {
-            await controls.start({ opacity: 0, x: '-150%', })
+            await controls.start({ opacity: 0, x: '-100%', })
             handleDelete(workout.id); // Delete the card based on the id received by props
           })();
         }
