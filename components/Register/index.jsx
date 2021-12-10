@@ -17,7 +17,7 @@ export const Register = () => {
       const { data } = await api.post('/users', userInfo);
       router.push('/login');
     } catch (err) {
-      window.alert('This user already exists');
+      window.alert('Esse usuário já existe');
     }
   }
 
