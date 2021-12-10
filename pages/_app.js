@@ -10,14 +10,10 @@ import 'react-toastify/dist/ReactToastify.css';
 export const ThemeContext = createContext({});
 
 function MyApp({ Component, pageProps }) {
-  const { themeSelected } = parseCookies();
-  console.log({ themeSelected })
-  const [theme, setTheme] = useState(themeSelected || 'light');
-  console.log(themeStyled[theme])
+  const [theme, setTheme] = useState('light');
 
   const toggleTheme = () => {
     setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
-    setCookie(null, 'themeSelected', theme === 'light' ? 'dark' : 'light');
   }
 
   return (

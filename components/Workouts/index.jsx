@@ -25,7 +25,7 @@ export const Workouts = ({
     toggleDayIsOpened, 
     inputRef 
 }) => {
-
+    console.log({ workouts });
     const handleInputFocus = (day) => {
         setDay(day); // Setting the value of the dropdown as the day of the empty card clicked
         scroll.scrollToTop({
@@ -37,7 +37,6 @@ export const Workouts = ({
     return (
         <WorkoutsContainer as={motion.section} variants={propagationFadeIn} initial="hidden" animate="show" >
                 {/* Here I am putting each day of the week on the screen */}
-                <AnimateSharedLayout>
                 {weekDays.map(({ day, slug }) => (
                         <WorkoutsPerDay key={slug} id={day} as={motion.div} variants={listItem}>
                             <DayContainer>
@@ -53,14 +52,13 @@ export const Workouts = ({
                                             <IoIosArrowUp size="24px" onClick={() => toggleDayIsOpened({ day: slug, open: true })} />
                                         </motion.div>
                                     )}
-                                    
                                 </div>
                             </DayContainer>
                             {/* Here I am checking if the workouts array has some workout with day property equal 
                                 to current day of the days map. If there is I map all of the workout and return only the workout with this day.
                                 And if there is no workout in this day I return a component wich say 'there´s no train in this day'
                             */}
-                            <AnimatePresence exitBeforeEnter>
+                            <AnimatePresence>
                                 {daysIsOpened[slug].isOpen && (
                                     workouts.filter((workout) => workout?.day === day).length > 0 ? ( // If the length of the array of the workout in a day is 0 is rendered a empty
                                         workouts.map((workout) => {
@@ -96,8 +94,6 @@ export const Workouts = ({
                             </AnimatePresence>
                         </WorkoutsPerDay>
                 ))}
-            </AnimateSharedLayout>
-
         </WorkoutsContainer>
     );
 }

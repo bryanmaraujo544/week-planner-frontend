@@ -66,7 +66,7 @@ export const Form = ({ workouts, setWorkouts, day, setDay, toggleDayIsOpened, in
     const createdAt = date.toISOString();
     const { data } = await api.post('/workouts', { workoutName, day, createdAt });
     console.log(data.message);
-    
+    console.log({ data });
     setWorkouts([...workouts, data.user]);
     setWorkoutName('');
     

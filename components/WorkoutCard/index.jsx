@@ -42,21 +42,21 @@ export const WorkoutCard = ({ workout, workouts, setWorkouts, ...props }) => {
   const controls = useAnimation();
 
 
-  const screenSize = 20000
-
+  const screenSize = useWindowDimensions();
+  console.log({ screenSize })
   useEffect(() => {
     // Grabbing the value of the motionvalue. And if is smaller than -250, in other words, if is -256, -299...
     const unsubscribeX = x.onChange((latest) => {
+      console.log(latest);
       if (screenSize.width > 678){
-        if (latest < -250.0){
+        console.log({ latest })
+        if (latest == -250.0){
           (async () => {
             await controls.start({ opacity: 0, x: '-150%', })
             handleDelete(workout.id); // Delete the card based on the id received by props
           })();
         }
-
       } else {
-        console.log('menor que -259')
         if (latest < -100.0){
           (async () => {
             await controls.start({ opacity: 0, x: '-150%', })
