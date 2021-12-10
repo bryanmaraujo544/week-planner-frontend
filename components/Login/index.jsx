@@ -22,9 +22,9 @@ export const Login = () => {
       await toast.promise(
         loginResponse,
         {
-          pending: 'Criando usuário',
-          success: 'Usuário criado',
-          error: 'Usuário não criado'
+          pending: 'Logando...',
+          success: 'Usuário logado',
+          error: 'Usuário não logado'
         } 
       )
       api.defaults.headers['Authorization'] = `Bearer ${loginData.token}`;
