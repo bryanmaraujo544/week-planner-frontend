@@ -11,6 +11,7 @@
 ![Animação](https://user-images.githubusercontent.com/62571814/145648954-4525ffb3-7bd1-4f01-b627-fdbf96425ea9.gif)
 
 > Application to user organize its own workouts in a week.
+#### Application URL: (https://week-planner.vercel.app/)
 
 ### Some fixings and improvements: 
 
