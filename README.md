@@ -12,6 +12,7 @@
 
 > Application to user organize its own workouts in a week.
 #### Application URL: (https://week-planner.vercel.app/)
+#### Backend Repository URL: (https://github.com/bryanmaraujo544/week-planner-api)
 
 ### Some fixings and improvements: 
 
