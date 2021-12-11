@@ -81,5 +81,3 @@ As an alternative, check the documentation of the Github to lear how to make a p
 
 </table>
 
-
-[⬆ Voltar ao topo](#week-planner-frontend)<br>
